@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AFE-AI – Strategisches Artificial Flow Engineering</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="afe-ai.css">
+</head>
+<body>
+
+<!-- ─── HINTERGRUNDRASTER ─── -->
+<div class="grid-bg"></div>
+
+<!-- ═══════════════════════════════════
+     NAVIGATION
+     ═══════════════════════════════════ -->
+<nav>
+  <!-- Logo: SVG-Hexagon-Netzwerk + Textname -->
+  <div class="nav-logo">
+    <svg width="38" height="38" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <radialGradient id="hexGrad" cx="50%" cy="40%" r="60%">
+          <stop offset="0%" stop-color="#00EEEE"/>
+          <stop offset="100%" stop-color="#007A7A"/>
+        </radialGradient>
+        <filter id="glow">
+          <feGaussianBlur stdDeviation="2.5" result="blur"/>
+          <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+        </filter>
+      </defs>
+      <!-- Äußeres Hexagon -->
+      <polygon points="50,4 93,27 93,73 50,96 7,73 7,27"
+        fill="none" stroke="#00CDCD" stroke-width="3.5" stroke-linejoin="round" opacity="0.9"/>
+      <!-- Inneres Hexagon (gefüllt + Rahmen) -->
+      <polygon points="50,22 74,35 74,65 50,78 26,65 26,35" fill="url(#hexGrad)" opacity="0.18"/>
+      <polygon points="50,22 74,35 74,65 50,78 26,65 26,35" fill="none" stroke="#00CDCD" stroke-width="2" opacity="0.7"/>
+      <!-- Knoten an Ecken des inneren Hexagons -->
+      <circle cx="50" cy="22" r="4" fill="#00EEEE" filter="url(#glow)"/>
+      <circle cx="74" cy="35" r="4" fill="#00EEEE" filter="url(#glow)"/>
+      <circle cx="74" cy="65" r="4" fill="#00EEEE" filter="url(#glow)"/>
+      <circle cx="50" cy="78" r="4" fill="#00EEEE" filter="url(#glow)"/>
+      <circle cx="26" cy="65" r="4" fill="#00EEEE" filter="url(#glow)"/>
+      <circle cx="26" cy="35" r="4" fill="#00EEEE" filter="url(#glow)"/>
+      <!-- Mittelpunkt -->
+      <circle cx="50" cy="50" r="5.5" fill="#00CDCD" filter="url(#glow)"/>
+      <!-- Netzwerklinien: Mitte zu Ecken -->
+      <line x1="50" y1="50" x2="50" y2="22" stroke="#00CDCD" stroke-width="1.2" opacity="0.6"/>
+      <line x1="50" y1="50" x2="74" y2="35" stroke="#00CDCD" stroke-width="1.2" opacity="0.6"/>
+      <line x1="50" y1="50" x2="74" y2="65" stroke="#00CDCD" stroke-width="1.2" opacity="0.6"/>
+      <line x1="50" y1="50" x2="50" y2="78" stroke="#00CDCD" stroke-width="1.2" opacity="0.6"/>
+      <line x1="50" y1="50" x2="26" y2="65" stroke="#00CDCD" stroke-width="1.2" opacity="0.6"/>
+      <line x1="50" y1="50" x2="26" y2="35" stroke="#00CDCD" stroke-width="1.2" opacity="0.6"/>
+      <!-- Diagonale Querlinien -->
+      <line x1="50" y1="22" x2="74" y2="65" stroke="#00CDCD" stroke-width="0.8" opacity="0.35"/>
+      <line x1="74" y1="35" x2="26" y2="65" stroke="#00CDCD" stroke-width="0.8" opacity="0.35"/>
+      <line x1="74" y1="65" x2="26" y2="35" stroke="#00CDCD" stroke-width="0.8" opacity="0.35"/>
+      <!-- Äußere Eckpunkte -->
+      <circle cx="50" cy="4"  r="3" fill="#00CDCD" opacity="0.5"/>
+      <circle cx="93" cy="27" r="3" fill="#00CDCD" opacity="0.5"/>
+      <circle cx="93" cy="73" r="3" fill="#00CDCD" opacity="0.5"/>
+      <circle cx="50" cy="96" r="3" fill="#00CDCD" opacity="0.5"/>
+      <circle cx="7"  cy="73" r="3" fill="#00CDCD" opacity="0.5"/>
+      <circle cx="7"  cy="27" r="3" fill="#00CDCD" opacity="0.5"/>
+      <!-- Verbindungen: äußere zu inneren Ecken -->
+      <line x1="50" y1="4"  x2="50" y2="22" stroke="#00CDCD" stroke-width="1" opacity="0.4"/>
+      <line x1="93" y1="27" x2="74" y2="35" stroke="#00CDCD" stroke-width="1" opacity="0.4"/>
+      <line x1="93" y1="73" x2="74" y2="65" stroke="#00CDCD" stroke-width="1" opacity="0.4"/>
+      <line x1="50" y1="96" x2="50" y2="78" stroke="#00CDCD" stroke-width="1" opacity="0.4"/>
+      <line x1="7"  y1="73" x2="26" y2="65" stroke="#00CDCD" stroke-width="1" opacity="0.4"/>
+      <line x1="7"  y1="27" x2="26" y2="35" stroke="#00CDCD" stroke-width="1" opacity="0.4"/>
+    </svg>
+    <span>AFE·AI</span>
+  </div>
+
+  <!-- Navigationslinks -->
+  <ul class="nav-links">
+    <li><a href="#vorteile">Vorteile</a></li>
+    <li><a href="#prozess">Prozess</a></li>
+    <li><a href="#vergleich">Vergleich</a></li>
+  </ul>
+
+  <!-- CTA-Button -->
+  <button class="nav-cta" onclick="document.getElementById('cta').scrollIntoView({behavior:'smooth'})">
+    Erstgespräch
+  </button>
+</nav>
+
+
+<!-- ═══════════════════════════════════
+     HERO
+     ═══════════════════════════════════ -->
+<section class="hero">
+  <div class="hero-glow"></div>
+  <div style="position:relative; z-index:1;">
+    <div class="hero-tag">
+      <span class="pulse-dot"></span>
+      Strategisches Artificial Flow Engineering
+    </div>
+    <h1>Intelligenz,<br>die <em>automatisiert.</em><br>Präzision, die skaliert.</h1>
+    <p class="hero-sub">
+      Bis zu 80 % der manuellen Arbeitszeit im Support und der Datenverarbeitung —
+      vollautomatisiert. Zero Halluzinationen. Enterprise-Präzision.
+    </p>
+    <div class="hero-actions">
+      <button class="btn-primary"
+        onclick="document.getElementById('cta').scrollIntoView({behavior:'smooth'})">
+        Kostenlosen Zeit-Audit anfragen
+      </button>
+      <button class="btn-secondary"
+        onclick="document.getElementById('prozess').scrollIntoView({behavior:'smooth'})">
+        Das 3-Stufen-Modell
+      </button>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════
+     STAT STRIP
+     ═══════════════════════════════════ -->
+<div class="stat-strip">
+  <div class="stat-item">
+    <span class="stat-num">bis zu 80%</span>
+    <span class="stat-label">Zeitersparnis im Support</span>
+  </div>
+  <div class="stat-item">
+    <span class="stat-num">&lt;5s</span>
+    <span class="stat-label">Echtzeit-Antworten</span>
+  </div>
+  <div class="stat-item">
+    <span class="stat-num">0%</span>
+    <span class="stat-label">Halluzinations-Risiko</span>
+  </div>
+  <div class="stat-item">
+    <span class="stat-num">24/7</span>
+    <span class="stat-label">Verfügbarkeit &amp; Skalierung</span>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════
+     PROBLEME
+     ═══════════════════════════════════ -->
+<section class="problems">
+  <div class="section-inner">
+    <div class="section-header reveal">
+      <span class="section-tag">Das Problem</span>
+      <h2 class="section-title">Repetition blockiert Wachstum</h2>
+      <p class="section-desc">
+        Teams verbrennen ihre wertvollste Ressource — Zeit — in manuellen Schleifen,
+        die kein Mensch machen sollte.
+      </p>
+    </div>
+    <div class="problems-grid">
+      <div class="problem-card reveal">
+        <span class="problem-icon">⏱</span>
+        <div class="problem-title">Zeitverschwendung</div>
+        <p class="problem-text">
+          8-Stunden-Tasks in repetitiver E-Mail- und Datenbearbeitung täglich —
+          Stunde für Stunde, die nicht für Wachstum genutzt werden kann.
+        </p>
+      </div>
+      <div class="problem-card reveal" style="transition-delay:0.1s">
+        <span class="problem-icon">⚠️</span>
+        <div class="problem-title">Überlastung &amp; Fehler</div>
+        <p class="problem-text">
+          Manuell verarbeitete Prozesse sind fehleranfällig. Kunden warten stundenlang.
+          Mitarbeiter sind überlastet und frustriert.
+        </p>
+      </div>
+      <div class="problem-card reveal" style="transition-delay:0.2s">
+        <span class="problem-icon">📉</span>
+        <div class="problem-title">Kein Skalierungspfad</div>
+        <p class="problem-text">
+          Steigt das Aufkommen, explodiert der Personalaufwand mit.
+          Wachstum wird zur Belastung statt zur Chance.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════
+     VORTEILE
+     ═══════════════════════════════════ -->
+<section class="benefits" id="vorteile">
+  <div class="section-inner">
+    <div class="section-header reveal">
+      <span class="section-tag">Kernvorteile</span>
+      <h2 class="section-title">Was bis zu 80 % Zeitgewinn<br>für Ihr Unternehmen bedeuten</h2>
+    </div>
+    <div class="benefits-grid">
+      <div class="benefit-card reveal">
+        <span class="benefit-num">01 — Entlastung</span>
+        <h3 class="benefit-title">Radikale Befreiung Ihrer Teams</h3>
+        <p class="benefit-text">
+          Aufgaben, die vorher 8 Stunden täglich erfordert haben, erledigt das AFE-KI-System
+          vollautomatisiert in wenigen Minuten. Ihre Mitarbeiter gewinnen echte Fokuszeit
+          für strategische Aufgaben und persönlichen Kundenkontakt.
+        </p>
+      </div>
+      <div class="benefit-card reveal" style="transition-delay:0.12s">
+        <span class="benefit-num">02 — Skalierung</span>
+        <h3 class="benefit-title">Wachstum ohne Personalnot</h3>
+        <p class="benefit-text">
+          Steigt das Kundenaufkommen um das Fünffache, bleibt Ihre Arbeitszeit stabil.
+          Das System wächst mit — ohne Einstellungsstopp, ohne Überstunden, ohne Engpässe.
+        </p>
+      </div>
+      <div class="benefit-card reveal" style="transition-delay:0.08s">
+        <span class="benefit-num">03 — Präzision</span>
+        <h3 class="benefit-title">Zero-Hallucination &amp; Echtzeit</h3>
+        <p class="benefit-text">
+          Kunden erhalten sekundenschnelle Antworten — absolut fehlerfrei, datensicher
+          und präzise auf Basis Ihrer Unternehmensdaten.
+          Kein Nachkontrollaufwand, keine Fehlerkorrektur-Schleifen.
+        </p>
+      </div>
+      <div class="benefit-card reveal" style="transition-delay:0.2s">
+        <span class="benefit-num">04 — Integration</span>
+        <h3 class="benefit-title">Nahtlose IT-Integration</h3>
+        <p class="benefit-text">
+          Das System fügt sich in Ihre bestehende Infrastruktur ein.
+          Kein Rip-and-Replace. Kein Betrieb mit zwei Systemen.
+          Stille Präzision im Hintergrund — ab Tag eins.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════
+     3-STUFEN PROZESS
+     ═══════════════════════════════════ -->
+<section class="process" id="prozess">
+  <div class="section-inner">
+    <div class="section-header reveal">
+      <span class="section-tag">Das 3-Stufen-Modell</span>
+      <h2 class="section-title">Von der Analyse<br>zur digitalen Befreiung</h2>
+      <p class="section-desc">
+        Wir strukturieren Ihren Arbeitsalltag neu, um ungenutzte Zeitpotenziale
+        systematisch freizusetzen.
+      </p>
+    </div>
+    <div class="steps">
+      <div class="step reveal">
+        <div class="step-circle">I</div>
+        <span class="step-label">Stufe 01 — Analyse</span>
+        <h3 class="step-title">Zeitanalyse &amp; Flow-Audit</h3>
+        <p class="step-text">
+          Wir durchleuchten Ihre aktuellen Workflows und stoppen die Zeitfresser.
+          Schwarz auf weiß: in welchen Prozessen Sie sofort bis zu 80 % der manuellen
+          Arbeitszeit einsparen können.
+        </p>
+      </div>
+      <div class="step reveal" style="transition-delay:0.15s">
+        <div class="step-circle">II</div>
+        <span class="step-label">Stufe 02 — Strategie</span>
+        <h3 class="step-title">Zeitoptimiertes Engineering</h3>
+        <p class="step-text">
+          Wir entwickeln eine maßgeschneiderte KI-Infrastruktur, die exakt auf die
+          Eliminierung von Routineaufgaben ausgelegt ist — nahtlos in Ihre bestehende IT integriert.
+        </p>
+      </div>
+      <div class="step reveal" style="transition-delay:0.3s">
+        <div class="step-circle">III</div>
+        <span class="step-label">Stufe 03 — Umsetzung</span>
+        <h3 class="step-title">Digitale Befreiung</h3>
+        <p class="step-text">
+          Rollout. Ab Tag eins sinkt der Zeitaufwand im Support drastisch.
+          Reibungsverluste verschwinden und Ihr Unternehmen gewinnt strategische Flexibilität zurück.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════
+     VERGLEICHSTABELLE
+     ═══════════════════════════════════ -->
+<section class="comparison" id="vergleich">
+  <div class="section-inner">
+    <div class="section-header reveal">
+      <span class="section-tag">Direktvergleich</span>
+      <h2 class="section-title">Zeitaufwand im Fokus</h2>
+    </div>
+    <div class="table-wrap reveal">
+      <table class="comp-table">
+        <thead>
+          <tr>
+            <th>Bereich / Aufgabe</th>
+            <th>Vorher — Manuell</th>
+            <th>Nach AFE-AI Integration</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Arbeitszeit im Kundenservice</td>
+            <td>100 % — hoher Stressfaktor, Überstunden, Fluktuation</td>
+            <td><span class="badge-good">−bis zu 80 % Aufwand</span><br>KI übernimmt die Routine vollständig</td>
+          </tr>
+          <tr>
+            <td>Antwort- &amp; Bearbeitungszeit</td>
+            <td>Minuten bis Stunden — Kunden müssen warten</td>
+            <td><span class="badge-good">Echtzeit 24/7</span><br>Sekundenschnelle Antworten, rund um die Uhr</td>
+          </tr>
+          <tr>
+            <td>Präzision &amp; Fehlerkontrolle</td>
+            <td>Halluzinationsrisiko erfordert manuelle Nachkontrolle</td>
+            <td><span class="badge-good">0 % Kontrollaufwand</span><br>Ingenieurspräzision auf Basis Ihrer Daten</td>
+          </tr>
+          <tr>
+            <td>Mitarbeiter-Fokus</td>
+            <td>Gebunden in repetitiven E-Mail- und Datenschleifen</td>
+            <td><span class="badge-good">100 % strategisch</span><br>Fokus auf Umsatz, Qualität &amp; Kundenerlebnis</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════
+     CTA
+     ═══════════════════════════════════ -->
+<section class="cta-section" id="cta">
+  <div class="section-inner" style="position:relative;z-index:1;">
+    <div class="reveal">
+      <span class="section-tag">Holen Sie sich Ihre Zeit zurück</span>
+      <h2 class="section-title">
+        Schluss mit<br>
+        <em style="font-style:italic;
+                   background:linear-gradient(135deg,#00EEEE,#00CDCD);
+                   -webkit-background-clip:text;
+                   -webkit-text-fill-color:transparent;
+                   background-clip:text;">
+          Zeitschreddern
+        </em><br>
+        und Überstunden.
+      </h2>
+      <p class="section-desc" style="margin-top:1.5rem;">
+        In einem kostenlosen 20-minütigen Erstgespräch analysieren wir Ihre Support-Strukturen
+        und berechnen das konkrete Zeiteinsparungspotenzial für Ihr Unternehmen.
+      </p>
+    </div>
+    <div class="cta-form reveal" style="transition-delay:0.15s;">
+      <input type="email" class="cta-input" placeholder="Ihre geschäftliche E-Mail-Adresse">
+      <button class="btn-primary" style="white-space:nowrap;padding:1rem 2rem;">
+        Zeit-Audit anfragen →
+      </button>
+    </div>
+    <p class="cta-note reveal" style="transition-delay:0.25s;">
+      Kostenlos &amp; unverbindlich · 20 Minuten · Konkretes Einsparpotenzial für Ihr Unternehmen
+    </p>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════
+     FOOTER
+     ═══════════════════════════════════ -->
+<footer>
+  <div class="footer-logo" style="display:flex;align-items:center;gap:10px;">
+    <svg width="28" height="28" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <radialGradient id="hexGrad2" cx="50%" cy="40%" r="60%">
+          <stop offset="0%" stop-color="#00EEEE"/>
+          <stop offset="100%" stop-color="#007A7A"/>
+        </radialGradient>
+        <filter id="glow2">
+          <feGaussianBlur stdDeviation="2.5" result="blur"/>
+          <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+        </filter>
+      </defs>
+      <polygon points="50,4 93,27 93,73 50,96 7,73 7,27" fill="none" stroke="#00CDCD" stroke-width="3.5" opacity="0.9"/>
+      <polygon points="50,22 74,35 74,65 50,78 26,65 26,35" fill="url(#hexGrad2)" opacity="0.18"/>
+      <polygon points="50,22 74,35 74,65 50,78 26,65 26,35" fill="none" stroke="#00CDCD" stroke-width="2" opacity="0.7"/>
+      <circle cx="50" cy="50" r="5.5" fill="#00CDCD" filter="url(#glow2)"/>
+      <line x1="50" y1="50" x2="50" y2="22" stroke="#00CDCD" stroke-width="1.2" opacity="0.6"/>
+      <line x1="50" y1="50" x2="74" y2="35" stroke="#00CDCD" stroke-width="1.2" opacity="0.6"/>
+      <line x1="50" y1="50" x2="74" y2="65" stroke="#00CDCD" stroke-width="1.2" opacity="0.6"/>
+      <line x1="50" y1="50" x2="50" y2="78" stroke="#00CDCD" stroke-width="1.2" opacity="0.6"/>
+      <line x1="50" y1="50" x2="26" y2="65" stroke="#00CDCD" stroke-width="1.2" opacity="0.6"/>
+      <line x1="50" y1="50" x2="26" y2="35" stroke="#00CDCD" stroke-width="1.2" opacity="0.6"/>
+    </svg>
+    <span>AFE·AI</span>
+  </div>
+  <div class="footer-copy">© 2026 AFE-AI — Strategisches Artificial Flow Engineering</div>
+</footer>
+
+<!-- Externes JavaScript -->
+<script src="afe-ai.js"></script>
+
+</body>
+</html>
