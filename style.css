@@ -309,7 +309,7 @@ main {
 
 /* STATS BAR */
 .stats-bar {
-  display: grid; grid-template-columns: repeat(2, 1fr);
+  display: grid; grid-template-columns: repeat(3, 1fr);
   border: 1px solid var(--slate-border);
   background: var(--slate-mid);
   margin-bottom: 2.5rem;
@@ -870,366 +870,75 @@ footer {
 
 .form-success.visible { display: block; }
 
+/* Datenschutz-Checkbox Styling */
+.form-checkbox-group {
+  margin-top: 1.8rem;
+  padding: 1.2rem;
+  background: rgba(0,205,205,0.03);
+  border: 1px solid rgba(0,205,205,0.15);
+  border-radius: 4px;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.8rem;
+  cursor: pointer;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: var(--white);
+  font-family: 'DM Sans', sans-serif;
+}
+
+.checkbox-label input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  min-width: 20px;
+  min-height: 20px;
+  margin-top: 2px;
+  cursor: pointer;
+  accent-color: var(--cyan);
+  border: 1px solid var(--cyan);
+  border-radius: 2px;
+}
+
+.checkbox-label input[type="checkbox"]:hover {
+  box-shadow: 0 0 8px rgba(0,205,205,0.4);
+}
+
+.checkbox-label input[type="checkbox"]:checked {
+  background-color: var(--cyan);
+  border-color: var(--cyan);
+}
+
+.checkbox-text {
+  display: block;
+  padding-top: 2px;
+}
+
+.checkbox-text a {
+  color: var(--cyan-light);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(0,238,238,0.5);
+  transition: all 0.2s;
+}
+
+.checkbox-text a:hover {
+  color: var(--cyan);
+  border-bottom-color: var(--cyan);
+}
+
+#datenschutz-error {
+  display: block;
+  margin-top: 0.8rem;
+  font-size: 0.85rem;
+  color: #ff6b6b;
+}
+
 /* Responsive */
 @media (max-width: 600px) {
   .form-row { grid-template-columns: 1fr; }
   .kontakt-form { padding: 1.5rem; }
-}
-
-/* ============================================================
-   MOBILE RESPONSIVE – Smartphones (max-width: 768px)
-   ============================================================ */
-
-@media (max-width: 768px) {
-
-  /* ── NAV ── */
-  nav {
-    padding: 0.7rem 1.25rem;
-  }
-  .nav-logo img {
-    height: 44px;
-  }
-  .nav-cta {
-    font-size: 0.68rem;
-    padding: 0.5rem 1rem;
-    letter-spacing: 0.08em;
-  }
-
-  /* ── HERO ── */
-  .hero {
-    flex-direction: column;
-    padding: 2.5rem 1.25rem;
-    margin-top: 66px;
-    min-height: unset;
-    gap: 1.5rem;
-  }
-  .hero-right {
-    display: none;
-  }
-  .hero-left {
-    max-width: 100%;
-  }
-  .hero-h1 {
-    font-size: clamp(1.9rem, 7vw, 2.8rem);
-  }
-  .hero-sub {
-    font-size: 0.92rem;
-    max-width: 100%;
-  }
-
-  /* ── MAIN ── */
-  main {
-    padding: 2.5rem 1.25rem;
-  }
-
-  /* ── PAGE HEADER ── */
-  .page-header {
-    margin-bottom: 2rem;
-  }
-  .page-header h1 {
-    font-size: clamp(1.6rem, 5.5vw, 2.2rem);
-  }
-
-  /* ── SECTION BANNER ── */
-  .section-banner {
-    padding: 0.85rem 1.25rem;
-  }
-  .section-banner span {
-    font-size: 0.78rem;
-    letter-spacing: 0.1em;
-  }
-
-  /* ── WORKER CARD ── */
-  .worker-card {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 1rem;
-    padding: 1.25rem;
-  }
-
-  /* ── AUTO GRID ── */
-  .auto-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  /* ── STATS BAR ── */
-  .stats-bar {
-    grid-template-columns: 1fr;
-  }
-  .stat-item {
-    border-right: none;
-    border-bottom: 1px solid var(--slate-border);
-    padding: 1.2rem;
-  }
-  .stat-item:last-child {
-    border-bottom: none;
-  }
-
-  /* ── QUOTE BLOCK ── */
-  .quote-block {
-    padding: 1.5rem 1.5rem 1.5rem 2rem;
-  }
-  .quote-mark {
-    font-size: 3rem;
-    top: 1.2rem;
-    left: 0.8rem;
-  }
-  .quote-text {
-    font-size: 1.05rem;
-    padding-left: 0.5rem;
-  }
-
-  /* ── CTA BANNER ── */
-  .cta-banner {
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 1.5rem 1.25rem;
-    gap: 1.2rem;
-  }
-  .cta-btn {
-    width: 100%;
-    justify-content: center;
-    text-align: center;
-  }
-  .cta-banner-text {
-    font-size: 1.3rem;
-  }
-
-  /* ── ALLES AUS EINER HAND ── */
-  .aaeih-inner {
-    padding: 3rem 1.25rem;
-  }
-  .aaeih-title {
-    font-size: clamp(1.7rem, 5.5vw, 2.5rem);
-  }
-
-  /* ── PRIVATE KI ── */
-  .ki-inner {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-    padding: 3rem 1.25rem;
-  }
-  .ki-visual {
-    display: none;
-  }
-  .ki-title {
-    font-size: clamp(1.7rem, 5.5vw, 2.5rem);
-    margin-bottom: 1.5rem;
-  }
-
-  /* ── BAFA ── */
-  .bafa-inner {
-    padding: 3rem 1.25rem;
-  }
-  .bafa-promo {
-    font-size: 0.95rem;
-    padding: 0.85rem 1.2rem;
-  }
-  .bafa-title {
-    font-size: clamp(1.4rem, 4.5vw, 1.9rem);
-  }
-
-  /* ── CONTACT FORM ── */
-  .kontakt-inner {
-    padding: 3rem 1.25rem;
-  }
-  .form-row {
-    grid-template-columns: 1fr;
-  }
-  .kontakt-form {
-    padding: 1.5rem 1.25rem;
-  }
-  .form-submit-btn {
-    width: 100%;
-    justify-content: center;
-    align-self: stretch;
-  }
-
-  /* ── FOOTER ── */
-  footer {
-    flex-direction: column;
-    align-items: center;
-    gap: 0.75rem;
-    padding: 1.5rem 1.25rem;
-    text-align: center;
-  }
-}
-
-/* ============================================================
-   EXTRA SMALL – Sehr kleine Smartphones (max-width: 480px)
-   ============================================================ */
-
-@media (max-width: 480px) {
-
-  /* ── NAV ── */
-  nav {
-    padding: 0.6rem 1rem;
-  }
-  .nav-logo img {
-    height: 36px;
-  }
-  .nav-cta {
-    font-size: 0.62rem;
-    padding: 0.42rem 0.8rem;
-    letter-spacing: 0.06em;
-  }
-
-  /* ── HERO ── */
-  .hero {
-    padding: 2rem 1rem;
-    margin-top: 58px;
-  }
-  .hero-eyebrow {
-    font-size: 0.58rem;
-    letter-spacing: 0.2em;
-    margin-bottom: 1rem;
-  }
-  .hero-h1 {
-    font-size: clamp(1.75rem, 8.5vw, 2.4rem);
-  }
-  .hero-sub {
-    font-size: 0.88rem;
-    margin-bottom: 1.5rem;
-  }
-  .hero-tags {
-    margin-bottom: 1.6rem;
-    gap: 0.45rem;
-  }
-  .hero-tag {
-    font-size: 0.56rem;
-  }
-  .hero-btn {
-    width: 100%;
-    justify-content: center;
-    padding: 0.85rem 1.5rem;
-  }
-
-  /* ── MAIN ── */
-  main {
-    padding: 2rem 1rem;
-  }
-
-  /* ── PAGE HEADER ── */
-  .page-header h1 {
-    font-size: clamp(1.45rem, 6.5vw, 1.9rem);
-  }
-  .page-header p {
-    font-size: 0.9rem;
-  }
-
-  /* ── AUTO GRID: 1 Spalte auf kleinen Bildschirmen ── */
-  .auto-grid {
-    grid-template-columns: 1fr;
-  }
-  .auto-tile {
-    padding: 1.25rem;
-  }
-
-  /* ── STATS BAR ── */
-  .stat-num {
-    font-size: 1.65rem;
-  }
-  .stat-label {
-    font-size: 0.65rem;
-  }
-  .stat-item {
-    padding: 1rem;
-  }
-
-  /* ── BAFA ── */
-  .bafa-inner {
-    padding: 2.5rem 1rem;
-  }
-  .bafa-step-left {
-    width: 36px;
-  }
-  .bafa-num {
-    width: 28px;
-    height: 28px;
-    font-size: 0.68rem;
-  }
-  .bafa-connector {
-    min-height: 14px;
-  }
-  .bafa-step-right {
-    padding-left: 0.75rem;
-    padding-bottom: 1rem;
-    padding-top: 4px;
-  }
-  .bafa-item {
-    font-size: 0.82rem;
-    padding: 0.6rem 0.9rem;
-  }
-
-  /* ── KI ── */
-  .ki-inner {
-    padding: 2.5rem 1rem;
-  }
-  .ki-list {
-    gap: 0.75rem;
-  }
-  .ki-item {
-    font-size: 0.9rem;
-  }
-  .ki-desc {
-    font-size: 0.88rem;
-  }
-
-  /* ── CONTACT FORM ── */
-  .kontakt-inner {
-    padding: 2.5rem 1rem;
-  }
-  .kontakt-form {
-    padding: 1.25rem 1rem;
-    gap: 1.1rem;
-  }
-  .form-group input,
-  .form-group textarea {
-    font-size: 0.85rem;
-    padding: 0.7rem 0.85rem;
-  }
-  .form-submit-btn {
-    padding: 0.85rem 1.5rem;
-    font-size: 0.78rem;
-  }
-
-  /* ── AAEIH ── */
-  .aaeih-inner {
-    padding: 2.5rem 1rem;
-  }
-  .aaeih-text {
-    font-size: 1.05rem;
-  }
-
-  /* ── QUOTE ── */
-  .quote-block {
-    padding: 1.25rem 1rem 1.25rem 1.6rem;
-  }
-  .quote-text {
-    font-size: 1rem;
-  }
-  .quote-mark {
-    font-size: 2.5rem;
-    top: 1rem;
-    left: 0.5rem;
-  }
-
-  /* ── CTA BANNER ── */
-  .cta-banner {
-    padding: 1.25rem 1rem;
-  }
-  .cta-banner-text {
-    font-size: 1.2rem;
-  }
-
-  /* ── FOOTER ── */
-  footer {
-    padding: 1.25rem 1rem;
-  }
-  .footer-logo img {
-    height: 24px;
-  }
-  .footer-copy {
-    font-size: 0.68rem;
-  }
+  .form-checkbox-group { padding: 1rem; }
+  .checkbox-label { font-size: 0.9rem; }
 }
