@@ -55,6 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const emailInput    = document.getElementById('email');
   const telefonInput  = document.getElementById('telefon');
   const nachrichtInput = document.getElementById('nachricht');
+  const datenschutzCheckbox = document.getElementById('datenschutz');
   const successMsg    = document.getElementById('form-success');
 
   /**
@@ -158,6 +159,22 @@ document.addEventListener('DOMContentLoaded', () => {
       formularGueltig = false;
     } else {
       setzeFehler(telefonInput, 'telefon-error', false);
+    }
+
+    // Datenschutz-Checkbox prüfen
+    const datenschutzError = document.getElementById('datenschutz-error');
+    if (!datenschutzCheckbox.checked) {
+      datenschutzCheckbox.classList.add('error');
+      if (datenschutzError) {
+        datenschutzError.classList.add('visible');
+        datenschutzError.textContent = 'Bitte bestätigen Sie die Datenschutzerklärung.';
+      }
+      formularGueltig = false;
+    } else {
+      datenschutzCheckbox.classList.remove('error');
+      if (datenschutzError) {
+        datenschutzError.classList.remove('visible');
+      }
     }
 
     // Wenn alles gültig: Formular "absenden" (Erfolgsmeldung zeigen)
